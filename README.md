@@ -14,7 +14,7 @@ pnpm add ry-generator-cli -g
 
 ```
   ry-cli --help # 查看帮助
-  ry-cli -v # 查看版本
+  ry-cli --version # 查看版本
   ry-cli create [options] <app-name> # 创建项目
   ry-cli list # 查看可用模板列表
 ```
