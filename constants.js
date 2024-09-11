@@ -16,8 +16,8 @@ export const templates = [
   },
   {
     name: "vue-admin-box",
-    value: "cmdparkour/vue-admin-box",
-    desc: "cmdparkour vue3 + vite中后台项目模板"
+    url: "cmdparkour/vue-admin-box",
+    description: "cmdparkour vue3 + vite中后台项目模板"
   }
 ]
 
