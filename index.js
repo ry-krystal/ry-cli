@@ -39,7 +39,6 @@ program
   .command("list")
   .description("查看所有可用的模板")
   .action(() => {
-    // console.log(star, chalk.greenBright("所有可用模板如下:"));
     // 创建表格
     const table = new Table({
       colAligns: ['center', 'center', 'center', 'center'],

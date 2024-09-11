@@ -1,7 +1,7 @@
 import clone from './gitClone.js'
 import shell from 'shelljs'
 import chalk from 'chalk'
-import { info, success, warning, error, arrow, star } from './logSymbol.js'
+import { info, warning, error, } from './logSymbol.js'
 import fs from "fs-extra"
 import { removeDir, changePackageJson, npmInstall } from "./utils.js"
 import { inquirerConfirm, inquirerChoose, inquirerInputs } from './interactive.js'
