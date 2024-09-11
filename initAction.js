@@ -67,6 +67,7 @@ const initAction = async (name, option) => {
   if (!option.ignore) {
     // 询问
     const answers = await inquirerInputs(messages);
+    console.log('answer', answers);
     await changePackageJson(name, answers)
   }
 
