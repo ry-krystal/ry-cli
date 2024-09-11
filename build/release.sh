@@ -26,6 +26,10 @@ then
     exit 1
   fi
 
+  # 获取当前远程的版本号，方便在报错时回滚
+  CURRENT_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
+  echo "\r\n---当前远程版本号是: $CURRENT_VERSION---\r\n"
+
   # 修改package.json中的版本号
   npm version $VERSION --message "[release]: $VERSION"
 
@@ -40,3 +44,14 @@ then
 else
   echo "发布取消"
 fi
+
+# 结束时取消 trap
+trap - ERR
+exit 0
+
+# 定义回滚函数，在发生错误时调用
+rollback() {
+  echo "\r\n---发生错误，正在回滚到远程版本 $CURRENT_VERSION---\r\n"
+  git reset --hard $CURRENT_VERSION
+  echo "\r\n---回滚完成，本地版本与远程一致---\r\n"
+}
