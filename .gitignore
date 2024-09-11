@@ -1,0 +1,47 @@
+# ry-cli自定义脚手架
+
+自定义脚手架：命令行工具
+
+# Numerous always-ignore extensions  
+*.bak  
+*.patch  
+*.diff  
+*.err  
+ 
+# temp file for git conflict merging  
+*.orig  
+*.log  
+*.rej  
+*.swo  
+*.swp  
+*.zip  
+*.vi  
+*.sass-cache  
+*.tmp.html  
+*.dump  
+ 
+# OS or Editor folders  
+.DS_Store  
+._*  
+.cache  
+.project  
+.settings  
+.tmproj  
+*.esproj  
+*.sublime-project  
+*.sublime-workspace  
+nbproject  
+thumbs.db  
+*.iml  
+ 
+# Folders to ignore  
+.hg  
+.svn  
+.CVS  
+.idea
+.next  
+node_modules/  
+jscoverage_lib/  
+bower_components/  
+dist/ 
+.vscode/
