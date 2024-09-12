@@ -3,10 +3,20 @@
 set -e
 # 捕获错误信号，并在错误时调用rollback函数
 trap rollback ERR
+# 获取远程的版本号列表
+REMOTE_VERSIONS=$(git tag -l)
+
 # 输出提示信息
 echo "输入新发布的版本号:"
 # 等待用户在终端输入，输入的内容将赋值给变量 VERSION
 read VERSION
+
+# 检查输入的版本号是否与远程版本号冲突
+if echo "$REMOTE_VERSIONS" | grep -q "^v$VERSION$"; then
+  echo "\r\n---版本号 $VERSION 已经存在，请选择一个不同的版本号---\r\n"
+  exit 1
+fi
+
 # 输出信息并且让用户输入信息
 # -p 选项用于在输出前显示提示信息， -n1 选项表示只接受一个字符的输入
 read -p "确认发布 $VERSION ? (y/n)" -n1
