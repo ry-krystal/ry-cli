@@ -8,7 +8,7 @@ import initAction from './initAction.js'
 import { star } from "./logSymbol.js"
 import Table from 'cli-table3'
 
-const pkg = fs.readJSONSync(new URL('./package.json', import.meta.url))
+const pkg = fs.readJSONSync(new URL('../package.json', import.meta.url))
 program.version(pkg.version, '-v, --version')
 
 program
