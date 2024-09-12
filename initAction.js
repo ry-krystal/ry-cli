@@ -6,8 +6,14 @@ import fs from "fs-extra"
 import { removeDir, changePackageJson, npmInstall } from "./utils.js"
 import { inquirerConfirm, inquirerChoose, inquirerInputs } from './interactive.js'
 import { templates, messages } from './constants.js'
+import semver from 'semver'
 
+const requiredVersion = '>=18.0.0' // 此项目要求 Node.js 18.0.0 及以上
 const initAction = async (name, option) => {
+  if (!semver.satisfies(process.version, requiredVersion)) {
+    console.error(`当前 Node.js 版本为 ${process.version}，但此项目要求 Node.js ${requiredVersion} 版本。`);
+    process.exit(1); // 退出脚本
+  }
   if (!shell.which('git')) {
     console.log(error, chalk.redBright('git没有安装，请先安装git'));
     shell.exit(1);

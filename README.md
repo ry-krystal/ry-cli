@@ -18,3 +18,7 @@ pnpm add ry-generator-cli -g
   ry-cli create [options] <app-name> # 创建项目
   ry-cli list # 查看可用模板列表
 ```
+
+## Node.js 版本要求
+
+此脚手架项目要求 Node.js 版本 >= 18.0.0。请确保你使用正确的 Node.js 版本。
