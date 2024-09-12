@@ -9,7 +9,7 @@
     "release": "sh build/release.sh"
   },
   "bin": {
-    "ry-cli": "./index.js"
+    "ry-cli": "./src/index.js"
   },
   "repository": {
     "type": "git",
