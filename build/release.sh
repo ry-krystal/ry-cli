@@ -1,6 +1,8 @@
 #! /usr/bin/env sh
 # 告诉脚本在任何命令出错的时候立即退出。这样可以确保在脚本执行过程中遇到错误时立即停止
 set -e
+# 捕获错误信号，并在错误时调用rollback函数
+trap rollback ERR
 # 输出提示信息
 echo "输入新发布的版本号:"
 # 等待用户在终端输入，输入的内容将赋值给变量 VERSION
@@ -41,8 +43,10 @@ then
 
   # 发布到npm
   npm publish
+  echo "\r\n---发布成功---\r\n"
 else
   echo "发布取消"
+  exit 0
 fi
 
 # 结束时取消 trap
@@ -52,6 +56,9 @@ exit 0
 # 定义回滚函数，在发生错误时调用
 rollback() {
   echo "\r\n---发生错误，正在回滚到远程版本 $CURRENT_VERSION---\r\n"
+  # 重置工作目录
   git reset --hard $CURRENT_VERSION
+  # 回滚package.json中的版本号到当前版本
+  npm version $CURRENT_VERSION --allow-same-version --message "[rollback]: $CURRENT_VERSION"
   echo "\r\n---回滚完成，本地版本与远程一致---\r\n"
 }
