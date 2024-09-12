@@ -17,7 +17,7 @@ export const templates = [
   {
     name: "vue-admin-box",
     url: "cmdparkour/vue-admin-box",
-    description: "cmdparkour vue3 + vite中后台项目模板"
+    description: "基于vue3 + vite中后台项目模板"
   }
 ]
 
