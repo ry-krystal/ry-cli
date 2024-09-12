@@ -13,11 +13,6 @@ export const templates = [
     name: "vue-cli-template",
     url: "yingside/vue-cli-template",
     description: "基于vue-cli自定义初始化vue3项目"
-  },
-  {
-    name: "vue-admin-box",
-    url: "cmdparkour/vue-admin-box",
-    description: "基于vue3 + vite中后台项目模板"
   }
 ]
 
