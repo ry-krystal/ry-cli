@@ -6,6 +6,10 @@ trap rollback ERR
 # 获取远程的版本号列表
 REMOTE_VERSIONS=$(git tag -l)
 
+ # 获取当前远程的版本号，方便在报错时回滚
+CURRENT_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
+echo "\r\n---当前远程版本号是: $CURRENT_VERSION---\r\n"
+
 # 输出提示信息
 echo "输入新发布的版本号:"
 # 等待用户在终端输入，输入的内容将赋值给变量 VERSION
@@ -21,7 +25,6 @@ fi
 # -p 选项用于在输出前显示提示信息， -n1 选项表示只接受一个字符的输入
 read -p "确认发布 $VERSION ? (y/n)" -n1
 
-# echo "\r\n----$VERSION----$REPLY\r\n"
 # 直接输出一个空行
 echo
 
@@ -37,10 +40,6 @@ then
     echo "\r\n---工作目录没有任何需要提交的内容，不建议生产新的版本---\r\n"
     exit 1
   fi
-
-  # 获取当前远程的版本号，方便在报错时回滚
-  CURRENT_VERSION=$(git describe --tags `git rev-list --tags --max-count=1`)
-  echo "\r\n---当前远程版本号是: $CURRENT_VERSION---\r\n"
 
   # 修改package.json中的版本号
   npm version $VERSION --message "[release]: $VERSION"
